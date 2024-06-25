@@ -11,4 +11,12 @@ public class SortsTests
         var sorted = Sorts.BubbleSort(input);
         Console.WriteLine(sorted);
     }
+
+    [Fact]
+    public void InsertionSortTest()
+    {
+        var input = new int[]{3, 2, 1, 2, 6, 0, 21, 4, 8, 1, 4};
+        var sorted = Sorts.InsertionSort(input);
+        Console.WriteLine(sorted);
+    }
 }

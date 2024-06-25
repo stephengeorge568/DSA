@@ -23,6 +23,20 @@ public static class Sorts
         return arr;
     }
 
+    public static int[] InsertionSort(int[] arr)
+    {
+        for (int i = 1; i < arr.Length; i++)
+        {
+            int j = i;
+            while (j > 0 && arr[j] < arr[j - 1])
+            {
+                Swap(ref arr[j], ref arr[j - 1]);
+                j--;
+            }
+        }
+        return arr;
+    }
+
     private static void Swap(ref int x, ref int y)
     {
         int temp = x;
