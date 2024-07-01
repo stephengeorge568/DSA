@@ -37,6 +37,23 @@ public static class Sorts
         return arr;
     }
 
+    public static int[] SelectionSort(int[] arr)
+    {
+        for (int i = arr.Length - 1; i >= 0; i--)
+        {
+            int biggestIndex = 0;
+            for (int j = 0; j <= i; j++)
+            {
+                if (arr[j] > arr[biggestIndex])
+                {
+                    biggestIndex = j;
+                }
+            }
+            Swap(ref arr[i], ref arr[biggestIndex]);
+        }
+        return arr;
+    }
+
     private static void Swap(ref int x, ref int y)
     {
         int temp = x;

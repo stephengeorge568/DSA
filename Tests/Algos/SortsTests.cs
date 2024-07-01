@@ -19,4 +19,12 @@ public class SortsTests
         var sorted = Sorts.InsertionSort(input);
         Console.WriteLine(sorted);
     }
+
+    [Fact]
+    public void SelectionSortTest()
+    {
+        var input = new int[]{3, 2, 1, 2, 6, 0, 21, 4, 8, 1, 4};
+        var sorted = Sorts.SelectionSort(input);
+        Console.WriteLine(sorted);
+    }
 }
