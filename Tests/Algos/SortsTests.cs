@@ -27,4 +27,12 @@ public class SortsTests
         var sorted = Sorts.SelectionSort(input);
         Console.WriteLine(sorted);
     }
+
+    [Fact]
+    public void HeapSortTest()
+    {
+        var input = new int[]{3, 2, 1, 21, 2, 6};
+        var sorted = Sorts.HeapSort(input);
+        Console.WriteLine(sorted);
+    }
 }

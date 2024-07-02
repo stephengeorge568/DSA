@@ -63,6 +63,53 @@ public static class Sorts
         return arr;
     }
 
+    // Heaps follow 2 rules. parent nodes greater or equal to children. Binary tree, fills from left to right
+    // all layers except last layer must be completed filled in. and only right side of that row can be partially empty
+    public static int[] HeapSort(int[] arr)
+    {
+        if (arr.Length == 0)
+        {
+            return arr;
+        }
+
+        // Make arr a max heap. The sorting process relys on this being true and largest element being at top.
+        for (int i = arr.Length / 2 - 1; i >=0; i--)
+        {
+            Heapify(arr, i, 0);
+        }
+
+        for (int i = arr.Length - 1; i >= 0; i--)
+        {
+            Swap(ref arr[0], ref arr[i]);
+            Heapify(arr, i, 0);
+        }
+        return arr;
+    }
+
+    private static void Heapify(int[] arr, int size, int index)
+    {
+        var largest = index;
+        // if array is visualized as a heap/bin tree, arr position x can be transformed into the left-right tree position with this formula
+        var left = 2 * index + 1;
+        var right = 2 * index + 2;
+        if (left < arr.Length && arr[left] > arr[largest])
+        {
+            largest = left;
+        }
+
+        if (right < arr.Length && arr[right] > arr[largest])
+        {
+            largest = right;
+        }
+
+        if (largest != index)
+        {
+            // shift the larger child up and swap with parent.
+            Swap(ref arr[index], ref arr[largest]);
+            Heapify(arr, size, largest);
+        }
+    }
+
     private static void Swap(ref int x, ref int y)
     {
         int temp = x;
