@@ -63,6 +63,55 @@ public static class Sorts
         return arr;
     }
 
+    public static void QuickSort(int[] arr)
+    {
+        QuickSort(arr, 0, arr.Length - 1);
+    }
+
+    public static void QuickSort(int[] arr, int left, int right)
+    {
+        if (left >= right)
+        {
+            return;
+        }
+
+        int pivot = arr[(left + right) / 2];
+        int collisionPoint = Partition(arr, left, right, pivot);
+        // Recursively sort each half
+        QuickSort(arr, left, collisionPoint - 1);
+        QuickSort(arr, collisionPoint, right);
+    }
+
+    public static int Partition(int[] arr, int left, int right, int pivot)
+    {
+        // Do this process until left and right collide
+        while(left <= right)
+        {
+            // Keep shifting bounds until left is at one that is bigger than pivot
+            while (arr[left] < pivot)
+            {
+                left++;
+            }
+            // and until right is smaller than pivot
+            while (arr[right] > pivot)
+            {
+                right--;
+            }
+
+            if (left <= right)
+            {
+                // Swap element to left of pivot that is bigger than pivot with element on right of pivot
+                // that is smaller than pivot.
+                Swap(ref arr[left], ref arr[right]);
+                // Shift bounds for next iteration
+                left++;
+                right--;
+            }
+        }
+        return left;
+    }
+
+
     // Heaps follow 2 rules. parent nodes greater or equal to children. Binary tree, fills from left to right
     // all layers except last layer must be completed filled in. and only right side of that row can be partially empty
     public static int[] HeapSort(int[] arr)

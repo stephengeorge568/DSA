@@ -35,4 +35,12 @@ public class SortsTests
         var sorted = Sorts.HeapSort(input);
         Console.WriteLine(sorted);
     }
+
+    [Fact]
+    public void QuickSortTest()
+    {
+        var input = new int[]{3, 2, 1, 21, 2, 6};
+        Sorts.QuickSort(input);
+        Console.WriteLine(input);
+    }
 }
